@@ -8,6 +8,7 @@ import "./PlayingCardList.css";
  * Can also add a new card at random. */
 function CardTable() {
   const [cards, setCards] = useState([]);
+  
   const addCard = async () => {
     const response = await axios.get(
       "https://deckofcardsapi.com/api/deck/new/draw/"
