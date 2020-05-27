@@ -3,7 +3,8 @@ import pokemonList from "./pokemonList";
 import { choice } from "./helpers";
 
 /* Select element to choose from common pokemon. */
-function PokemonSelect({ add, pokemon = pokemonList }) {
+function PokemonSelect({ add, pokemon = pokemonList, removeAll }) {
+
   const [pokeIdx, setPokeIdx] = useState(0);
   const handleChange = evt => {
     setPokeIdx(evt.target.value);
@@ -20,6 +21,7 @@ function PokemonSelect({ add, pokemon = pokemonList }) {
       </select>
       <button onClick={() => add(pokemon[pokeIdx])}>Catch one!</button>
       <button onClick={() => add(choice(pokemon))}>I'm feeling lucky</button>
+      <button onClick={removeAll}>Remove all Pokemon</button> 
     </div>
   );
 }

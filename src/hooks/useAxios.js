@@ -5,12 +5,20 @@ import axios from "axios";
 const useAxios = (url) => {
     const [state, setState] = useState([]);
 
-    const getData = async () => {
-        const response = await axios.get(url);
+    const getData = async (name) => {
+
+        let response;
+        if (typeof name === 'string') response = await axios.get(url + name);
+        else response = await axios.get(url);
+        
         setState(state => [...state, { ...response.data, id: uuid() }]);
     }
+
+    const removeAll = () => {
+        setState(state => [])
+    }
    
-    return [state, getData]
+    return [state, getData, removeAll]
 }
 
 export default useAxios;
